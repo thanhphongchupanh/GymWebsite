@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&display=swap');
+
+:root {
+    --header: #fff;
+    --green: #54B192;
+    --gray: #3F3D56;
+    --green-l: #A4CEC0;
+    --smooth: all .3s ease-in;
+}
+
+
+/* FORM-BOX */
+.wrapper {
+    position: fixed;
+    top: 20%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    border: 2px solid #e3dddd;
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px var(--gray);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: .2s ease;
+    overflow: hidden;
+    transform: scale(0);
+}
+
+/* == Active class Pop-up ==  */
+.wrapper.active-popup {
+    position: fixed;
+    top: 20%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    transform: scale(1);
+}
+
+
+/*   Active class Pop-up   */
+/* == Active class ==  */
+/* LOGIN FORM  */
+
+/* không có lớp active thì login form đứng vtri cũ */
+.wrapper .form-box.login {
+    transition: .20s ease;
+    transform: translateX(0);
+}
+
+/* khi lớp active đang hoạt động thì di chuyển login-form sang trái */
+.wrapper.active .form-box.login {
+    transition: .20s ease;
+    transform: translateX(-400px);
+}
+
+/* REGISTRER FORM  */
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(420px);
+}
+
+.wrapper.active .form-box.register {
+    transition: .20s ease;
+    transform: translateX(0);
+}
+
+/* khi lớp active được tạo ra thì sẽ thay đổi height */
+.wrapper.active {
+    height: 520px;
+}
+
+/*  Active class  */
+
+
+
+.wrapper.form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.form-box h2 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid var(--gray);
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 1em;
+    font-weight: bold;
+    /* khi ấn vô label thì sẽ không nhận */
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background: transparent;
+    border: none;
+    padding: 0 35px 0 5px;
+}
+
+.icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Remember */
+.remember-forget {
+    font-size: .9em;
+    margin: -15px 0 15px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forget a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    margin-left: 30px;
+    font-size: .9em;
+}
+
+.remember-forget a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    color: var(--header);
+    background: var(--gray);
+    cursor: pointer;
+}
+
+.login-register {
+    text-align: center;
+    margin: 20px 0;
+    font-size: .9em;
+    font-weight: 500;
+}
+
+.login-register a {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+.login-register a:hover {
+    text-decoration: underline;
+}
+
+/* == Icon close ==  */
+.icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--gray);
+    color: var(--header);
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-bottom-left-radius: 20px;
+}
