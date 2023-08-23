@@ -17,12 +17,12 @@
             </span>
             <div class="form-box login">
                 <h2>Login</h2>
-                <form action="#">
+                <form action="MainController">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="mail-outline"></ion-icon>
                         </span>
-                        <input type="text" required>
+                        <input type="text" name="email" required>
                         <label>Email</label>
                     </div>
 
@@ -30,7 +30,7 @@
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
-                        <input type="password" required>
+                        <input type="password" name="password" required>
                         <label>Password</label>
                     </div>
 
@@ -51,12 +51,12 @@
 
             <div class="form-box register">
                 <h2>Registration</h2>
-                <form action="#">
+                <form action="MainController">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
                         </span>
-                        <input type="text" required>
+                        <input type="text" name="username" required>
                         <label>Username</label>
                     </div>
 
@@ -64,7 +64,7 @@
                         <span class="icon">
                             <ion-icon name="mail-outline"></ion-icon>
                         </span>
-                        <input type="text" required>
+                        <input type="text" name="email" required>
                         <label>Email</label>
                     </div>
 
@@ -72,7 +72,7 @@
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
-                        <input type="password" required>
+                        <input type="password" name="password" required>
                         <label>Password</label>
                     </div>
 
@@ -83,7 +83,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn">Register</button>
+                    <button type="submit" name="action" value="Register" class="btn">Register</button>
 
                     <div class="login-register">
                         <p>Already have account? <a href="#" class="login-link">Login</a></p>
