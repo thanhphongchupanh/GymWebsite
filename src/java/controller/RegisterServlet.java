@@ -40,29 +40,24 @@ public class RegisterServlet extends HttpServlet {
         try {
             DAO dao = new DAO();
             boolean checkValidation = true;
-            String userID = request.getParameter("userID");
-            String username = request.getParameter("username");
-            String roleID = request.getParameter("role");
+            String userID = dao.generateRandomUserID();
             String password = request.getParameter("password");
+            String username = request.getParameter("username");
+            String role = request.getParameter("role");
             String email = request.getParameter("email");
-            
-            if (userID.length() < 2 || userID.length() > 20) {
-                userError.setUserIDError("UserID must be in [2,20]");
-                checkValidation = false;
-            }
 
             if (username.length() < 5 || username.length() > 20) {
                 userError.setFullNameError("username must be in [5,20]");
                 checkValidation = false;
             }
-            
-            if(email.length()< 5 || email.length() > 30){
+
+            if (email.length() < 5 || email.length() > 30) {
                 userError.setEmailError("email must be in [5,30]");
                 checkValidation = false;
             }
-            
+
             if (checkValidation) {
-                DTO user = new DTO(userID, username, password, roleID, email);
+                DTO user = new DTO(userID, username, password, role, email);
                 boolean checkInsert = dao.register(user);
                 if (checkInsert) {
                     url = SUCCESS;
@@ -73,7 +68,8 @@ public class RegisterServlet extends HttpServlet {
             } else {
                 request.setAttribute("USER_ERROR", userError);
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

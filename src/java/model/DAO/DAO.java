@@ -22,7 +22,7 @@ import utils.DBHelper;
 public class DAO {
 
     private static final String LOGIN = "SELECT username, role from Account WHERE email=? AND password=?";
-    private static final String REGISTER = "INSERT INTO Account(email, password, username) VALUES(?,?,?)";
+    private static final String REGISTER = "INSERT INTO Account(userID, password, username, role, email) VALUES(?,?,?,?,?)";
 
     public DTO checkLogin(String email, String password) throws SQLException {
         DTO user = null;
@@ -68,10 +68,13 @@ public class DAO {
             conn = DBHelper.makeConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(REGISTER);
-                ptm.setString(1, user.getUsername());
-                ptm.setString(2, user.getEmail());
-                ptm.setString(3, user.getPassword());
+                ptm.setString(1, user.getUserID());
+                ptm.setString(2, user.getPassword());
+                ptm.setString(3, user.getUsername());
+                ptm.setString(4, user.getRole());
+                ptm.setString(5, user.getEmail());
                 check = ptm.executeUpdate() > 0 ? true : false;
+                conn.commit();
             }
         } finally {
             if (ptm != null) {
@@ -86,8 +89,8 @@ public class DAO {
 
     public String generateRandomUserID() {
         Random random = new Random();
-        int randomNumber = random.nextInt(10000); 
-        return String.format("%04d", randomNumber); 
+        int randomNumber = random.nextInt(10000);
+        return String.format("%04d", randomNumber);
     }
 
 }

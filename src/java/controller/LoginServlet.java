@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
             if (loginUser == null) {
                 request.setAttribute("ERROR", "Incorrect email or password");
             } else {
-                String roleID = loginUser.getRoleID();
+                String roleID = loginUser.getRole();
                 HttpSession session = request.getSession();
                 session.setAttribute("LOGIN_USER", loginUser);
 
