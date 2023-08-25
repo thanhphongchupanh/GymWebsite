@@ -9,10 +9,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home page</title>
-        <%@include file="layout/header.jsp" %>
+        <title>Home page</title>     
     </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            overflow: hidden;
+        }
+    </style>
     <body>
-
+        <header>
+            <%@include file="layout/header.jsp" %> 
+        </header>
+            <%@include file="layout/footer.jsp" %>      
     </body>
 </html>
