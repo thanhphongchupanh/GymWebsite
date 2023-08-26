@@ -6,13 +6,15 @@
 package model.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import model.DTO.DTO;
+import model.DTO.AccountDTO;
+import model.DTO.CartDTO;
 import utils.DBHelper;
 
 /**
@@ -21,26 +23,24 @@ import utils.DBHelper;
  */
 public class DAO {
 
-    private static final String LOGIN = "SELECT username, role from Account WHERE email=? AND password=?";
-    private static final String REGISTER = "INSERT INTO Account(userID, password, username, role, email) VALUES(?,?,?,?,?)";
-
-    public DTO checkLogin(String email, String password) throws SQLException {
-        DTO user = null;
+    public AccountDTO checkLogin(String username, String password) throws SQLException {
+        AccountDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
+            String url = "SELECT username, password, role from Account WHERE username=? AND password=?";
             conn = DBHelper.makeConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(LOGIN);
-                ptm.setString(1, email);
+                ptm = conn.prepareStatement(url);
+                ptm.setString(1, username);
                 ptm.setString(2, password);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
-                    String fullName = rs.getString("username");
+                    username = rs.getString("username");
+                    password = rs.getString("password");
                     String roleID = rs.getString("role");
-                    String userID = rs.getString("userID");
-                    user = new DTO(userID, fullName, password, roleID, email);
+                    user = new AccountDTO(0, username, password, roleID, "");
                 }
             }
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class DAO {
         return user;
     }
 
-    public boolean register(DTO user) throws SQLException, ClassNotFoundException {
+    public boolean registerUser(int userID, String firstName, String lastName, String phoneNumber, String shippingAddress) throws SQLException, ClassNotFoundException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -67,15 +67,18 @@ public class DAO {
         try {
             conn = DBHelper.makeConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(REGISTER);
-                ptm.setString(1, user.getUserID());
-                ptm.setString(2, user.getPassword());
-                ptm.setString(3, user.getUsername());
-                ptm.setString(4, user.getRole());
-                ptm.setString(5, user.getEmail());
+                String url = "INSERT INTO [User] (userID, firstName, lastName, phoneNumber, shipping_address) VALUES(?,?,?,?,?)";
+                ptm = conn.prepareStatement(url);
+                ptm.setInt(1, userID);
+                ptm.setString(2, firstName);
+                ptm.setString(3, lastName);
+                ptm.setString(4, phoneNumber);
+                ptm.setString(5, shippingAddress);
                 check = ptm.executeUpdate() > 0 ? true : false;
                 conn.commit();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (ptm != null) {
                 ptm.close();
@@ -87,10 +90,122 @@ public class DAO {
         return check;
     }
 
-    public String generateRandomUserID() {
+    public boolean registerAccount(int userID, String password, String username, String email) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBHelper.makeConnection();
+            if (conn != null) {
+                String url = "INSERT INTO Account(userID, password, username, role, email) VALUES(?,?,?,?,?)";
+                ptm = conn.prepareStatement(url);
+                ptm.setInt(1, userID);
+                ptm.setString(2, password);
+                ptm.setString(3, username);
+                ptm.setString(4, "Guest");
+                ptm.setString(5, email);
+                check = ptm.executeUpdate() > 0 ? true : false;
+                conn.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+
+    public boolean insertUserIDIntoCart(int userID) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBHelper.makeConnection();
+            if (conn != null) {
+                String url = "INSERT INTO Cart(userID) VALUES(?)";
+                ptm = conn.prepareStatement(url);
+                ptm.setInt(1, userID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+                conn.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public boolean insertUserIDIntoPaymentCardInfo(int userID) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBHelper.makeConnection();
+            if (conn != null) {
+                String url = "INSERT INTO Payment_Card_information(userID) VALUES (?)";
+                ptm = conn.prepareStatement(url);
+                ptm.setInt(1, userID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+                conn.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public boolean insertUserIDIntoAccount(int userID) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBHelper.makeConnection();
+            if (conn != null) {
+                String url = "INSERT INTO Account(userID) VALUES(?)";
+                ptm = conn.prepareStatement(url);
+                ptm.setInt(1, userID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+                conn.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+
+    public int generateRandomUserID() {
         Random random = new Random();
         int randomNumber = random.nextInt(10000);
-        return String.format("%04d", randomNumber);
+        return randomNumber;
     }
 
 }

@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DAO.DAO;
-import model.DTO.DTO;
+import model.DTO.AccountDTO;
+import model.DTO.CartDTO;
 import utils.UserError;
 
 /**
@@ -40,36 +41,30 @@ public class RegisterServlet extends HttpServlet {
         try {
             DAO dao = new DAO();
             boolean checkValidation = true;
-            String userID = dao.generateRandomUserID();
+            int userID = dao.generateRandomUserID();
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String phoneNumber = request.getParameter("phoneNumber");
+            String shippingAddress = request.getParameter("shippingAddress");
             String password = request.getParameter("password");
             String username = request.getParameter("username");
-            String role = request.getParameter("role");
             String email = request.getParameter("email");
 
-            if (username.length() < 5 || username.length() > 20) {
-                userError.setFullNameError("username must be in [5,20]");
-                checkValidation = false;
-            }
-
-            if (email.length() < 5 || email.length() > 30) {
-                userError.setEmailError("email must be in [5,30]");
-                checkValidation = false;
-            }
-
             if (checkValidation) {
-                DTO user = new DTO(userID, username, password, role, email);
-                boolean checkInsert = dao.register(user);
+                dao.insertUserIDIntoPaymentCardInfo(userID);
+                dao.insertUserIDIntoCart(userID);
+                boolean checkInsert = dao.registerAccount(userID, password, username, email);
+                dao.registerUser(userID, firstName, lastName, phoneNumber, shippingAddress);
                 if (checkInsert) {
-                    url = SUCCESS;
+                    url = SUCCESS;                   
                 } else {
-                    userError.setError("Unknow error!");
+                    userError.setError("Register error!");
                     request.setAttribute("USER_ERROR", userError);
                 }
             } else {
                 request.setAttribute("USER_ERROR", userError);
             }
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

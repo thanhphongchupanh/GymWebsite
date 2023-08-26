@@ -13,6 +13,6 @@
         <%@include file="layout/header.jsp" %>
     </head>
     <body>
-
+        <h1>Ok nha</h1>
     </body>
 </html>

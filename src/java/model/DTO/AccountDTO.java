@@ -9,18 +9,18 @@ package model.DTO;
  *
  * @author Admin
  */
-public class DTO {
+public class AccountDTO {
 
-    private String userID;
+    private int userID;
     private String username;
     private String password;
     private String role;
     private String email;
 
-    public DTO() {
+    public AccountDTO() {
     }
 
-    public DTO(String userID, String username, String password, String role, String email) {
+    public AccountDTO(int userID, String username, String password, String role, String email) {
         this.userID = userID;
         this.username = username;
         this.password = password;
@@ -28,11 +28,11 @@ public class DTO {
         this.email = email;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
