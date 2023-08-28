@@ -40,13 +40,13 @@
                         <label>
                             <input type="checkbox" checked> Remember me
                         </label>
-                        <a href="#">Forgot Password?</a>
+                        <a href="forgotpassword.jsp" class="forgot-password-link">Forgot Password?</a>
                     </div>
 
                     <button type="submit" class="btn" name="action" value="Login">Login</button>
 
                     <div class="login-register">
-                        <p>Don't have account? <a href="#" class="register-link">Register</a></p>
+                        <p>Don't have account? <a href="#" class="register-link">Register</a> </p>
                     </div>
                 </form>
             </div>
@@ -129,6 +129,8 @@
         <div class="notification">
             Register Successfully
         </div>
+
+
         <style>
             .notification {
                 position: fixed;
@@ -148,6 +150,7 @@
             }
         </style>
 
+
         <script>
             function showMessage() {
                 const firstNameInput = document.getElementById('firstName');
@@ -164,7 +167,7 @@
                         usernameInput.validity.valid && emailInput.validity.valid &&
                         phoneNumberInput.validity.valid && passwordInput.validity.valid) {
 
-                notification.classList.add('active');
+                    notification.classList.add('active');
 
                     setTimeout(() => {
                         notification.classList.remove('active');

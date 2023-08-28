@@ -147,7 +147,7 @@ public class DAO {
         }
         return check;
     }
-    
+
     public boolean insertUserIDIntoPaymentCardInfo(int userID) throws SQLException, ClassNotFoundException {
         boolean check = false;
         Connection conn = null;
@@ -174,7 +174,7 @@ public class DAO {
         }
         return check;
     }
-    
+
     public boolean insertUserIDIntoAccount(int userID) throws SQLException, ClassNotFoundException {
         boolean check = false;
         Connection conn = null;
@@ -208,4 +208,11 @@ public class DAO {
         return randomNumber;
     }
 
+    public int generateOTP() {
+        Random random = new Random();
+        int randomOTP = random.nextInt(900000);
+        return randomOTP;
+    }
+
+    
 }

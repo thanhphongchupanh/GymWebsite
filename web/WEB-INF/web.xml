@@ -20,6 +20,14 @@
         <servlet-name>SaveInfoServlet</servlet-name>
         <servlet-class>controller.SaveInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <servlet-class>controller.ForgotPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendOTPServlet</servlet-name>
+        <servlet-class>controller.SendOTPServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DispatchServlet</servlet-name>
         <url-pattern>/DispatchServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>SaveInfoServlet</servlet-name>
         <url-pattern>/SaveInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <url-pattern>/ForgotPasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendOTPServlet</servlet-name>
+        <url-pattern>/SendOTPServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

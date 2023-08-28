@@ -23,6 +23,8 @@ public class MainController extends HttpServlet {
     private static final String LOGIN_CONTROLLER = "LoginServlet";
     private static final String REGISTER = "Register";
     private static final String REGISTER_CONTROLLER = "RegisterServlet";
+    private static final String FORGOTPASSWORD = "SendOTP";
+    private static final String FORGOTPASSWORD_CONTROLLER = "ForgotPasswordServlet";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,6 +47,8 @@ public class MainController extends HttpServlet {
                 url = LOGIN_CONTROLLER;
             } else if (REGISTER.equals(action)) {
                 url = REGISTER_CONTROLLER;
+            } else if (FORGOTPASSWORD.equals(action)) {
+                url = FORGOTPASSWORD_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
