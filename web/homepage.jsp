@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home page</title>     
+        <%@include file="layout/header.jsp" %> 
+        <link rel="stylesheet" href="css/wheyList.css">
     </head>
     <style>
         * {
@@ -19,13 +21,158 @@
             font-family: 'Poppins', sans-serif;
         }
         body {
-            overflow: hidden;
+            overflow: auto;
         }
     </style>
     <body>
-        <header>
-            <%@include file="layout/header.jsp" %> 
-        </header>
-            <%@include file="layout/footer.jsp" %>      
+        <!--Navigation Bar-->
+        <%@include file="layout/navigationBar.jsp" %> 
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+ 
+      
+        <!--Whey Product-->
+         <div id="wrapper">
+        <div class="headline">
+            <h2>Whey</h2>
+        </div>
+        <div class="whey-products">
+        <div class="bestSeller-photo">
+            <img src="img/img1.jpg" alt="">
+        </div>
+
+        <ul class="products">
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="img/img1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Buy Now</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Bag</a>
+                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
+                        <div class="product-price">$2.99,00</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+        
+        
+        <!--Footer-->
+        <footer>
+            <%@include file="layout/footer.jsp" %>   
+        </footer>            
     </body>
 </html>

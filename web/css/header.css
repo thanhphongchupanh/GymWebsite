@@ -83,6 +83,6 @@ a {
     transition: color 0.3s, border-bottom 0.3s;
 }
 
-.a:hover {
+a:hover {
     color: #949090;
 }

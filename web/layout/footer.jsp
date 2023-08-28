@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <footer>
+    <div class="footer" id="footer">
             <div class="container">
             <div class="sec aboutus">
                 <h2>About us</h2>
@@ -72,7 +72,7 @@
             </div>
         </div>
     
-    </footer>
+    </div>
     <div class="copyrightText">
         <p>Copyright © Gym website NextEvo by Luftphon and HoangLam</p>
     </div>
