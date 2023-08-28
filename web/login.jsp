@@ -8,6 +8,8 @@
         <title>Login Page</title>
         <link rel="stylesheet" href="css/loginForm.css">
         <%@include file="layout/header.jsp" %>
+
+
     </head>
     <body>
 
@@ -22,8 +24,8 @@
                         <span class="icon">
                             <ion-icon name="mail-outline"></ion-icon>
                         </span>
-                        <input type="text" name="email" required>
-                        <label>Email</label>
+                        <input type="text" name="username" required>
+                        <label>Username</label>
                     </div>
 
                     <div class="input-box">
@@ -41,7 +43,7 @@
                         <a href="#">Forgot Password?</a>
                     </div>
 
-                    <button type="submit" class="btn">Login</button>
+                    <button type="submit" class="btn" name="action" value="Login">Login</button>
 
                     <div class="login-register">
                         <p>Don't have account? <a href="#" class="register-link">Register</a></p>
@@ -56,7 +58,23 @@
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
                         </span>
-                        <input type="text" name="username" required>
+                        <input type="text" name="firstName" value="" required="" id="firstName">
+                        <label>First Name</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <input type="text" name="lastName" value="" required="" id="lastName">
+                        <label>Last Name</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <input type="text" name="username" value="" required="" id="username">
                         <label>Username</label>
                     </div>
 
@@ -64,15 +82,32 @@
                         <span class="icon">
                             <ion-icon name="mail-outline"></ion-icon>
                         </span>
-                        <input type="text" name="email" required>
+                        <input type="text" name="email" value="" required="" id="email">
                         <label>Email</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <input required type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                               size="10" pattern="[0-9]{10}" title="Please enter 10 digits only">
+                        <label>Phone Number</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <input type="text" name="shippingAddress" value="" required="" id="shippingAddress">
+                        <label>Shipping Address</label>
                     </div>
 
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
-                        <input type="password" name="password" required>
+                        <input type="password" name="password" value="" required="" id="password">
                         <label>Password</label>
                     </div>
 
@@ -83,7 +118,7 @@
 
                     </div>
 
-                    <button type="submit" name="action" value="Register" class="btn">Register</button>
+                    <button type="submit" name="action" value="Register" class="btn" onclick="showMessage()">Register</button>
 
                     <div class="login-register">
                         <p>Already have account? <a href="#" class="login-link">Login</a></p>
@@ -91,7 +126,52 @@
                 </form>
             </div>
         </div>
+        <div class="notification">
+            Register Successfully
+        </div>
+        <style>
+            .notification {
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                display: none;
+                padding: 20px;
+                z-index: 1000; /* ??m b?o h?p tho?i hi?n th? trên các ph?n t? khác */
+            }
 
+            .notification.active {
+                display: block;
+            }
+        </style>
+
+        <script>
+            function showMessage() {
+                const firstNameInput = document.getElementById('firstName');
+                const lastNameInput = document.getElementById('lastName');
+                const usernameInput = document.getElementById('username');
+                const emailInput = document.getElementById('email');
+                const phoneNumberInput = document.getElementById('phoneNumber');
+                const passwordInput = document.getElementById('password');
+
+                const notification = document.querySelector('.notification');
+
+                // Ki?m tra h?p l? cho các ô nh?p
+                if (firstNameInput.validity.valid && lastNameInput.validity.valid &&
+                        usernameInput.validity.valid && emailInput.validity.valid &&
+                        phoneNumberInput.validity.valid && passwordInput.validity.valid) {
+
+                notification.classList.add('active');
+
+                    setTimeout(() => {
+                        notification.classList.remove('active');
+                    }, 2000); // T?t thông báo sau 3 giây
+                }
+            }
+        </script>
         <script>
             const wrapper = document.querySelector('.wrapper');
             const loginLink = document.querySelector('.login-link');
@@ -121,28 +201,6 @@
             iconClose.addEventListener('click', () => {
                 wrapper.classList.remove('active-popup');
             });
-            // Pop up form-box
-
-
-            // const menu = document.querySelector(".navigation");
-            // const menuButton = document.querySelector(".navbar_icons");
-            // const overlay = document.querySelector("#overlay");
-
-
-            // làm cho nút button nghe ???c ??ng tác Click c?a User
-            // t?o class m?i ?? qua Css l?i ?? hi?n th? lên màn hình
-            //toggle: chuy?n ??i, classList: t?o class
-            // menuButton.addEventListener('click', ()=>{
-            //     menu.classList.toggle("navigation_open");
-            //     menuButton.classList.toggle("open");
-            //     overlay.classList.toggle("show");
-            // })
-
-            // overlay.addEventListener('click', ()=>{
-            //     menu.classList.toggle("navigation_open");
-            //     menuButton.classList.toggle("open");
-            //     overlay.classList.toggle("show");
-            // })
 
 
         </script>

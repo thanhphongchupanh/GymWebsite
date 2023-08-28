@@ -59,6 +59,15 @@
 }
 
 /* REGISTRER FORM  */
+  .form-box.register {
+    width: 300px;
+    height: 400px; /* Định nghĩa chiều cao khung */
+    overflow: auto; /* Tạo thanh cuộn nếu nội dung vượt quá chiều cao */
+    border: 0px solid #ccc;
+    padding: 70px 70px 70px 85px; /* Định nghĩa padding theo thứ tự top, right, bottom, left */
+    overflow-x: hidden;
+}
+
 
 .wrapper .form-box.register {
     position: absolute;

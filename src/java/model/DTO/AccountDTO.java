@@ -9,30 +9,30 @@ package model.DTO;
  *
  * @author Admin
  */
-public class DTO {
+public class AccountDTO {
 
-    private String userID;
+    private int userID;
     private String username;
     private String password;
-    private String roleID;
+    private String role;
     private String email;
 
-    public DTO() {
+    public AccountDTO() {
     }
 
-    public DTO(String userID, String username, String password, String roleID, String email) {
+    public AccountDTO(int userID, String username, String password, String role, String email) {
         this.userID = userID;
         this.username = username;
         this.password = password;
-        this.roleID = roleID;
+        this.role = role;
         this.email = email;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
@@ -52,12 +52,12 @@ public class DTO {
         this.password = password;
     }
 
-    public String getRoleID() {
-        return roleID;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleID(String roleID) {
-        this.roleID = roleID;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {
@@ -67,6 +67,8 @@ public class DTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    
 
     
 }

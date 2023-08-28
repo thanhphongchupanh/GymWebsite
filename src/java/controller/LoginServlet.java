@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.DAO.DAO;
-import model.DTO.DTO;
+import model.DTO.AccountDTO;
 
 /**
  *
@@ -22,9 +22,9 @@ import model.DTO.DTO;
  */
 public class LoginServlet extends HttpServlet {
 
-    private static final String AD = "AD";
+    private static final String AD = "Ad";
     private static final String ADMIN_PAGE = "admin.jsp";
-    private static final String GUEST = "GUEST";
+    private static final String GUEST = "Guest";
     private static final String GUEST_PAGE = "guest.jsp";
     private static final String LOGIN_PAGE = "login.jsp";
 
@@ -43,21 +43,20 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String url = LOGIN_PAGE;
         try {
-            String userID = request.getParameter("userID");
+            String username = request.getParameter("username");
             String password = request.getParameter("password");
             DAO dao = new DAO();
-            DTO loginUser = dao.checkLogin(userID, password);
+            AccountDTO loginUser = dao.checkLogin(username, password);
             if (loginUser == null) {
-                request.setAttribute("ERROR", "Incorrect email or password");
+                request.setAttribute("ERROR", "Incorrect username or password");
             } else {
-                String roleID = loginUser.getRoleID();
+                String roleID = loginUser.getRole();
                 HttpSession session = request.getSession();
                 session.setAttribute("LOGIN_USER", loginUser);
-
                 if (AD.equals(roleID)) {
                     url = ADMIN_PAGE;
                 } else if (GUEST.equals(roleID)) {
-                    url = GUEST_PAGE;
+                    url = "homepage.jsp";
                 } else {
                     request.setAttribute("ERROR", "Your role is not supported yet!");
                     url = LOGIN_PAGE;
