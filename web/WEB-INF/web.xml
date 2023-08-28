@@ -17,8 +17,8 @@
         <servlet-class>controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SaveInfoServlet</servlet-name>
-        <servlet-class>controller.SaveInfoServlet</servlet-class>
+        <servlet-name>NavDropDownServlet</servlet-name>
+        <servlet-class>controller.NavDropDownServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ForgotPasswordServlet</servlet-name>
@@ -45,8 +45,8 @@
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SaveInfoServlet</servlet-name>
-        <url-pattern>/SaveInfoServlet</url-pattern>
+        <servlet-name>NavDropDownServlet</servlet-name>
+        <url-pattern>/NavDropDownServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgotPasswordServlet</servlet-name>

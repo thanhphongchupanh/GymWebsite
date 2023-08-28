@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    position: relative;
+    left: 20px;
+    flex: 1;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+ .search-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex: 2;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 20px;
+      padding-right: 30px;
+      margin-right: 100px;
+      /* Add padding for the icon */
+    }
+
+    /* .search-icon {
+      position: absolute;
+      top: 55%;
+      right: 130px;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #999;
+    } */
+    .search-icon {
+    position: absolute; /* Đặt vị trí tuyệt đối để đặt biểu tượng tìm kiếm */
+    top: 50%; /* Đặt ở giữa chiều dọc */
+    right: 10px; /* Đặt ở phía bên phải */
+    transform: translateY(-50%); /* Dịch chuyển lên để căn giữa */
+    display: flex;
+    align-items: center;
+    color: #666;
+    margin-right: 100px;
+}
+
+.user-menu {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+.user-icon,
+.cart-icon {
+    display: flex;
+    align-items: center;
+    margin: 0 18px;
+    font-size: 17px;
+    color: white;
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+a:hover {
+    color: #949090;
+}
