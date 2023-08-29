@@ -29,15 +29,16 @@ body {
 }
 
 .product-item img {
-    max-width: 100%;
+    max-width: 150px;
     height: auto;
 }
-ul.products {
+.products {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-ul.products li{
+
+.products {
     flex-basis: 25%;
     padding-left: 15px;
     padding-right: 15px;
@@ -46,46 +47,46 @@ ul.products li{
     list-style: none;
 }
 
-ul.products li .product-info{
+.products  .product-info{
     padding: 10px 0px;
 }
 
-ul.products li .product-info a{
+.products  .product-info a{
     display: block;
     text-decoration: none;
 }
 
-ul.products li .product-info a.product-cat{
+.products  .product-info a.product-cat{
     font-size: 11px;
     text-transform: uppercase;
     color: #9e9e9e;
     padding: 3px 0px;
 }
 
-ul.products li .product-info a.product-name{
+.products  .product-info a.product-name{
     color: #334862; 
 }
 
-ul.products li .product-info .product-price{
+.products  .product-info .product-price{
     color: #111; 
     padding: 2px 0px;
     font-weight: 600;
 }
-ul.products li .product-top{
+.products  .product-top{
     position: relative;
     overflow: hidden;
 }
-ul.products li .product-top .product-thumb{
+.products  .product-top .product-thumb{
     display: block;
 }
-ul.products li .product-top .product-thumb img {
+.products  .product-top .product-thumb img {
     display: block;
 }
 
-ul.products li:hover .product-top .product-thumb img {
+.products :hover .product-top .product-thumb img {
     filter: opacity(80%);
 }
-ul.products li .product-top a.buy-now {
+.products .product-inner .product-top a.buy-now {
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
@@ -99,13 +100,16 @@ ul.products li .product-top a.buy-now {
     transition: .25s ease-in-out;
     opacity: 0.85;
 }
+/*.product-inner:hover {
+    transform: scale(1.05);
+}*/
 
-ul.products li:hover a.buy-now{
+.products .product-inner:hover a.buy-now{
     bottom: 0px;
 }
 
 .bestSeller-photo img:hover {
-    transform: scale(0.9);
+    transform: scale(1.05);
 }
 
 /* Chia cột product */
@@ -121,4 +125,24 @@ ul.products li:hover a.buy-now{
 .products {
     width: 70%;
 }
+
+#product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px; /* Add some negative margin to counteract padding */
+}
+
+.product-item {
+    flex-basis: calc(25% - 30px); /* 4 items per row */
+    margin-bottom: 30px;
+    padding: 0 15px;
+    /*box-sizing: border-box;*/
+    width: 2000px;
+}
+
+
+
+
+
 

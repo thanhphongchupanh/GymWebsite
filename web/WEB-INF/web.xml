@@ -20,6 +20,10 @@
         <servlet-name>NavDropDownServlet</servlet-name>
         <servlet-class>controller.NavDropDownServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>WheyProductListServlet</servlet-name>
+        <servlet-class>controller.WheyProductListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DispatchServlet</servlet-name>
         <url-pattern>/DispatchServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>NavDropDownServlet</servlet-name>
         <url-pattern>/NavDropDownServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WheyProductListServlet</servlet-name>
+        <url-pattern>/WheyProductListServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

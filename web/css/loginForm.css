@@ -32,7 +32,8 @@
     transform: scale(0);
 }
 
-/* == Active class Pop-up ==  */
+/* == Active classy-content: center;
+    align-items: center; Pop-up ==  */
 .wrapper.active-popup {
     position: fixed;
     top: 20%;
