@@ -28,6 +28,10 @@
         <servlet-name>CreatePasswordServlet</servlet-name>
         <servlet-class>controller.CreatePasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>WheyProductListServlet</servlet-name>
+        <servlet-class>controller.WheyProductListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DispatchServlet</servlet-name>
         <url-pattern>/DispatchServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ForgotPasswordServlet</servlet-name>
         <url-pattern>/ForgotPasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WheyProductListServlet</servlet-name>
+        <url-pattern>/WheyProductListServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

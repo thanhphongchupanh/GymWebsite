@@ -32,147 +32,61 @@
         <br/>
         <br/>
         <br/>
- 
-      
-        <!--Whey Product-->
-         <div id="wrapper">
-        <div class="headline">
-            <h2>Whey</h2>
-        </div>
-        <div class="whey-products">
-        <div class="bestSeller-photo">
-            <img src="img/img1.jpg" alt="">
-        </div>
 
-        <ul class="products">
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
+
+        <!--Whey Product-->
+        <div id="wrapper">
+            <div class="headline">
+                <h2>Whey</h2>
+            </div>
+            <div class="whey-products">
+                <div class="bestSeller-photo">
+                    <img src="img/img1.jpg" alt="">
                 </div>
-            </li>
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
+
+                <div id="product-grid" class="products">
+                    <c:set var="result" value="${sessionScope.WHEY_LIST}"/>                           
+                    <c:forEach items="${result}" var="product">
+                        <div class="product-item">
+                            <div class="product-inner">
+                            <div class="product-top">
+                                <a href="" class="product-thumb">
+                                    <img src="img/img1.jpg" alt="">
+                                </a>
+                                <a href="" class="buy-now">Buy Now</a>
+                            </div>
+                            <div class="product-info">
+                                <a href="" class="product-cat">Bag</a>
+                                <a href="" class="product-name">${product.name}</a>
+                                <div class="product-price">$ ${product.price}</div>
+                            </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${empty result}">
+                        Empty
+                    </c:if>
                 </div>
-            </li>
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="img/img1.jpg" alt="">
-                        </a>
-                        <a href="" class="buy-now">Buy Now</a>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat">Bag</a>
-                        <a href="" class="product-name">Dasi Bag Sonia by Sonia</a>
-                        <div class="product-price">$2.99,00</div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    </div>
-        
-        
+                           
+                            
+            </div>
+        </div>
         <!--Footer-->
         <footer>
             <%@include file="layout/footer.jsp" %>   
-        </footer>            
+        </footer> 
+
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                fetchWhey(); // Fetch job titles when the page loads
+            });
+
+            function fetchWhey() {
+                fetch('./WheyProductListServlet') // Use the relative URL here
+                        .then(response => {
+                            return response.json();
+                        })
+            }
+        </script>
     </body>
 </html>

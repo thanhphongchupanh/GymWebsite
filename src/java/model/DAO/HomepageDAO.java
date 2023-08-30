@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.DTO.CategoryDTO;
+import model.DTO.ProductDTO;
 import utils.DBHelper;
 
 /**
@@ -44,6 +45,48 @@ public class HomepageDAO {
                        this.cateList = new ArrayList<>();
                    }
                     this.cateList.add(dto);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
+    
+    private List<ProductDTO> productList;
+
+    public List<ProductDTO> getProductList() {
+        return productList;
+    }
+    public void showWheyProduct() throws SQLException{
+        Connection conn = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        ProductDTO dto = null;
+        try {
+            conn = DBHelper.makeConnection();
+            if(conn != null){
+                String sql = "SELECT TOP 8 productName, price FROM Product ";
+                stm = conn.prepareStatement(sql);
+                rs = stm.executeQuery();
+                while(rs.next()){
+                    String productName = rs.getString("productName");
+                    int price = rs.getInt("price");
+                    dto = new ProductDTO(productName, 0, 0, 0, 0, "", 0, 
+                            price, "", "", 0);
+                    if(this.productList == null){
+                       this.productList = new ArrayList<>();
+                   }
+                    this.productList.add(dto);
                 }
             }
         } catch (Exception e) {
