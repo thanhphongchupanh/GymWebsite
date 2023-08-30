@@ -47,7 +47,7 @@ public class MainController extends HttpServlet {
                 url = LOGIN_CONTROLLER;
             } else if (REGISTER.equals(action)) {
                 url = REGISTER_CONTROLLER;
-            } else if (FORGOTPASSWORD.equals(action)) {
+            } else if (action.equals("SendOTP")) {
                 url = FORGOTPASSWORD_CONTROLLER;
             }
         } catch (Exception e) {

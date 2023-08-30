@@ -9,6 +9,10 @@
         <servlet-class>controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <servlet-class>controller.ForgotPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>MainController</servlet-name>
         <servlet-class>controller.MainController</servlet-class>
     </servlet>
@@ -21,12 +25,8 @@
         <servlet-class>controller.NavDropDownServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <servlet-class>controller.ForgotPasswordServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SendOTPServlet</servlet-name>
-        <servlet-class>controller.SendOTPServlet</servlet-class>
+        <servlet-name>CreatePasswordServlet</servlet-name>
+        <servlet-class>controller.CreatePasswordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DispatchServlet</servlet-name>
@@ -49,12 +49,12 @@
         <url-pattern>/NavDropDownServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <url-pattern>/ForgotPasswordServlet</url-pattern>
+        <servlet-name>CreatePasswordServlet</servlet-name>
+        <url-pattern>/CreatePasswordServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SendOTPServlet</servlet-name>
-        <url-pattern>/SendOTPServlet</url-pattern>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <url-pattern>/ForgotPasswordServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -12,13 +12,11 @@
     <div class="container">
         <h2>Forgot Password</h2>
         <form action="MainController" method="post">
-            <label>Email:</label> 
             <div class="input-box">
                 <span class="icon">
                     <ion-icon name="mail-outline"></ion-icon>
                 </span>
-                <input type="email" name="email" required>
-                
+                <input type="email" id="email" name="email" placeholder="Enter your mail here" required>                
             </div>
 
             <button type="submit" class="btn" name="action" value="SendOTP">Send OTP</button>

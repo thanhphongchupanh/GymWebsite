@@ -28,9 +28,6 @@ import javax.mail.Session;
  * @author Admin
  */
 public class ForgotPasswordServlet extends HttpServlet {
-
-    private static final long serialVersionUID = 1L;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,7 +39,6 @@ public class ForgotPasswordServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
         if (isValidEmail(email)) {
@@ -59,6 +55,10 @@ public class ForgotPasswordServlet extends HttpServlet {
         }
     }
 
+    private void checkOTP(String otp){
+        
+    }
+    
     // Method to check if the email is valid
     private boolean isValidEmail(String email) {
         String emailPattern = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
@@ -76,10 +76,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("nguyenhoanglam18112003@gmail.com", "dnipyuhvqlvnkwxz");// Put your
-                // email
-                // id and
-                // password here
+                return new PasswordAuthentication("nguyenhoanglam18112003@gmail.com", "dnipyuhvqlvnkwxz");
             }
         });
         try {
