@@ -7,16 +7,21 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.DAO.HomepageDAO;
+import model.DAO.ProductDAO;
+import model.DTO.ProductDTO;
 
 /**
  *
  * @author ADMIN
  */
-public class DispatchServlet extends HttpServlet {
+public class ProductListServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,18 +34,42 @@ public class DispatchServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String button = request.getParameter("btnAction");
-        String url = "";
+        response.setContentType("application/json");
+        HomepageDAO dao = new HomepageDAO();
+        ProductDAO pdao = new ProductDAO();
+        String url = "homepage.jsp";
+        HttpSession session = request.getSession();
         try {
-            switch(button){
-                case "BuyNow":
-                    url = "DetailProductServlet";
-                    break;
-            }
+            // Get Whey
+            dao.showTop8Product("Whey");
+            List<ProductDTO> wheyList = dao.getWheyList();
+            session.setAttribute("WHEY_LIST", wheyList);
+            // Get Whey detail
+            pdao.showDetailedProduct("Whey");
+            List<ProductDTO> wheyDetailList = pdao.getWheyDetailList();
+            session.setAttribute("WHEY_DETAIL_LIST", wheyDetailList);
+            
+            // Get Mass
+            dao.showTop8Product("Mass");
+            List<ProductDTO> massList = dao.getMassList();
+            session.setAttribute("MASS_LIST", massList);
+            // Get Mass detail
+            pdao.showDetailedProduct("Mass");
+            List<ProductDTO> massDetailList = pdao.getMassDetailList();
+            session.setAttribute("MASS_DETAIL_LIST", massDetailList);
+            
+            // Get Pre workout
+            dao.showTop8Product("Pre Workout");
+            List<ProductDTO> preworkoutList = dao.getPreworkoutList();
+            session.setAttribute("PREWORKOUT_LIST", preworkoutList);
+            // Get PreWorkout detail
+            pdao.showDetailedProduct("Pre Workout");
+            List<ProductDTO> preworkoutDetailList = pdao.getPreworkoutDetailList();
+            session.setAttribute("PREWORKOUT_DETAIL_LIST", preworkoutDetailList);
         } catch (Exception e) {
-        }finally {
-             request.getRequestDispatcher(url).forward(request, response);
+            e.printStackTrace();
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

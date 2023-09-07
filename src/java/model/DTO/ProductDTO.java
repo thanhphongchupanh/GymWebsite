@@ -10,6 +10,7 @@ package model.DTO;
  * @author ADMIN
  */
 public class ProductDTO {
+
     private String name;
     private int brandID;
     private int orderID;
@@ -126,6 +127,10 @@ public class ProductDTO {
     public void setID(int ID) {
         this.ID = ID;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return description; 
+    }
+
 }

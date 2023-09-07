@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.DAO.HomepageDAO;
+import model.DAO.ProductDAO;
 import model.DTO.ProductDTO;
 
 /**
  *
  * @author ADMIN
  */
-public class WheyProductListServlet extends HttpServlet {
+public class DetailProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,18 +33,22 @@ public class WheyProductListServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
-        HomepageDAO dao = new HomepageDAO();
-        String url = "homepage.jsp";
+        response.setContentType("text/html;charset=UTF-8");
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        HttpSession session = request.getSession();
+        String url = "";
         try {
-            dao.showWheyProduct();
-            List<ProductDTO> list = dao.getProductList();
-            HttpSession session = request.getSession();
-            session.setAttribute("WHEY_LIST", list);
+            ProductDAO dao = new ProductDAO();
+            dao.showProductInDetail("Whey", productID);
+            dao.showProductInDetail("Mass", productID);
+            dao.showProductInDetail("Pre Workout", productID);
+            List<ProductDTO> list = dao.getDetailProduct();
+            session.setAttribute("PRODUCT_DETAIL", list);
+            url = "productDetail.jsp";
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        }finally{
+             request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

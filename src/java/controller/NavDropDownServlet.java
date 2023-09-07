@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.DAO.HomepageDAO;
-import model.DTO.CategoryDTO;
+import model.DTO.ProductTypeDTO;
 
 /**
  *
@@ -69,8 +69,8 @@ public class NavDropDownServlet extends HttpServlet {
      String url = "layout/navigationBar.jsp";
     try {
         HomepageDAO dao = new HomepageDAO();
-        dao.showCategory();
-        List<CategoryDTO> list = dao.getCateList();
+        dao.showNavigation();
+        List<ProductTypeDTO> list = dao.getCateList();
         if (list != null) {
             String json = new Gson().toJson(list);
             response.getWriter().write(json);

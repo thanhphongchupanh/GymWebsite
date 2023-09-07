@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home page</title>     
         <%@include file="layout/header.jsp" %> 
-        <link rel="stylesheet" href="css/wheyList.css">
+        <link rel="stylesheet" href="css/homepage.css">
     </head>
     <style>
         * {
@@ -41,29 +41,103 @@
             </div>
             <div class="whey-products">
                 <div class="bestSeller-photo">
-                    <img src="img/img1.jpg" alt="">
+                    <img src="img/whey (2).jpg" alt="">
                 </div>
 
                 <div id="product-grid" class="products">
-                    <c:set var="result" value="${sessionScope.WHEY_LIST}"/>                           
-                    <c:forEach items="${result}" var="product">
+                    <c:set var="whey" value="${sessionScope.WHEY_LIST}"/>                           
+                    <c:forEach items="${whey}" var="wheyProduct">
                         <div class="product-item">
                             <div class="product-inner">
                             <div class="product-top">
                                 <a href="" class="product-thumb">
-                                    <img src="img/img1.jpg" alt="">
+                                    <img src="${wheyProduct.image}" alt="">
                                 </a>
-                                <a href="" class="buy-now">Buy Now</a>
+                                 <a href="DispatchServlet?btnAction=BuyNow&productID=${wheyProduct.ID}" class="buy-now">Buy Now</a>
                             </div>
                             <div class="product-info">
                                 <a href="" class="product-cat">Bag</a>
-                                <a href="" class="product-name">${product.name}</a>
-                                <div class="product-price">$ ${product.price}</div>
+                                <a href="" class="product-name">${wheyProduct.name}</a>
+                                <div class="product-price">$ ${wheyProduct.price}</div>
                             </div>
                             </div>
                         </div>
                     </c:forEach>
-                    <c:if test="${empty result}">
+                    <c:if test="${empty whey}">
+                        Empty
+                    </c:if>
+                </div>
+                           
+                            
+            </div>
+        </div>
+        <!--Mass Product-->
+        <div id="wrapper">
+            <div class="headline">
+                <h2>Mass</h2>
+            </div>
+            <div class="whey-products">
+                <div class="bestSeller-photo">
+                    <img src="img/mass.jpg" alt="">
+                </div>
+
+                <div id="product-grid" class="products">
+                    <c:set var="mass" value="${sessionScope.MASS_LIST}"/>                           
+                    <c:forEach items="${mass}" var="massPrduct">
+                        <div class="product-item">
+                            <div class="product-inner">
+                            <div class="product-top">
+                                <a href="" class="product-thumb">
+                                    <img src="${massPrduct.image}" alt="">
+                                </a>
+                                <a href="DispatchServlet?btnAction=BuyNow&productID=${massPrduct.ID}" class="buy-now">Buy Now</a>
+                            </div>
+                            <div class="product-info">
+                                <a href="" class="product-cat">Bag</a>
+                                <a href="" class="product-name">${massPrduct.name}</a>
+                                <div class="product-price">$ ${massPrduct.price}</div>
+                            </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${empty mass}">
+                        Empty
+                    </c:if>
+                </div>
+                           
+                            
+            </div>
+        </div>
+        <!--Pre-workout Product-->
+        <div id="wrapper">
+            <div class="headline">
+                <h2>Pre Workout</h2>
+            </div>
+            <div class="whey-products">
+                <div class="bestSeller-photo">
+                    <img src="img/preworkout.jpg" alt="">
+                </div>
+
+                <div id="product-grid" class="products">
+                    <c:set var="preworkout" value="${sessionScope.PREWORKOUT_LIST}"/>                           
+                    <c:forEach items="${preworkout}" var="preworkoutPrduct">
+                        <div class="product-item">
+                            <div class="product-inner">
+                            <div class="product-top">
+                                <a href="" class="product-thumb">
+                                    <img src="${preworkoutPrduct.image}" alt="">
+                                </a>
+                                <a href="DispatchServlet?btnAction=BuyNow&productID=${preworkoutPrduct.ID}" class="buy-now">Buy Now</a>
+                            </div>
+                            <div class="product-info">
+                                <a href="" class="product-cat">Bag</a>
+                                <a href="" class="product-name">${preworkoutPrduct.name}</a>
+                                <div class="product-price">$ ${preworkoutPrduct.price}</div>
+                            </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${empty preworkout}">
                         Empty
                     </c:if>
                 </div>
@@ -82,7 +156,7 @@
             });
 
             function fetchWhey() {
-                fetch('./WheyProductListServlet') // Use the relative URL here
+                fetch('./ProductListServlet') // Use the relative URL here
                         .then(response => {
                             return response.json();
                         })

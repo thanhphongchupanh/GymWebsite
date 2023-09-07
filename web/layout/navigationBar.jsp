@@ -11,6 +11,7 @@
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <script type="text/javascript" src="js/jQuery.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
     </head>
 
     <body>
@@ -22,8 +23,22 @@
                     <ul>
                         <c:set var="result" value="${sessionScope.CATE_LIST}"/>
                         <c:forEach var="dto" items="${result}">
-                            <li><a href="#"><c:out value="${dto.name}" /></a></li>
-                            </c:forEach>
+                            <li>
+                                <a href="
+                                   <c:if test="${dto.type == 'Whey'}">
+                                       wheyList.jsp
+                                   </c:if>
+                                   <c:if test="${dto.type == 'Mass'}">
+                                       massList.jsp
+                                   </c:if>
+                                   <c:if test="${dto.type == 'Pre Workout'}">
+                                       preworkoutList.jsp
+                                   </c:if>
+                                   ">
+                                    <c:out value="${dto.type}" />
+                                </a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
 
@@ -31,6 +46,9 @@
                 <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Your Order</a></li>
             </ul>           
         </div>
+                        
+                        
+        
     </body>
 
     <script type="text/javascript">
@@ -72,8 +90,8 @@
                 });
             }, function () {
                 setTimeout(function () {
-                subMenu.css("display", "none");
-            }, 2000);
+                    subMenu.css("display", "none");
+                }, 2000);
             });
             // B?t s? ki?n hover vào sub-menu
             $(".sub-menu-1").hover(function () {
