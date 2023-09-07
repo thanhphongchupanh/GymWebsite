@@ -17,7 +17,7 @@
     <body>
         <div class="menu-bar">
             <ul>
-                <li><a href="homepage.jsp"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                <li><a href="account.jsp"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
                 <li><a id="allProductsLink" href="#"><i class="fa fa-th-list" aria-hidden="true"></i>All products</a></li>
                 <div class="sub-menu-1" style="display: none;">
                     <ul>

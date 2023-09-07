@@ -5,6 +5,7 @@
  */
 package controller;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.mail.PasswordAuthentication;
@@ -28,6 +29,7 @@ import javax.mail.Session;
  * @author Admin
  */
 public class ForgotPasswordServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,24 +43,23 @@ public class ForgotPasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
-        if (isValidEmail(email)) {
-            DAO dao = new DAO();
-            int otp = dao.generateOTP();
-            sendOTPViaEmail(email, otp);
-            // Send the OTP to the email address (you can use libraries like JavaMail for this)
-            HttpSession session = request.getSession();
-            session.setAttribute("otp", otp);
-            session.setAttribute("email", email);
-            response.sendRedirect("verify_otp.jsp"); // Redirect to a page to enter OTP
-        } else {
-            response.sendRedirect("forgotpassword.jsp"); // Redirect back if email is not valid
+        String url = "forgotpassword.jsp";
+        DAO dao = new DAO();
+        int otp = dao.generateOTP();
+        try {
+                sendOTPViaEmail(email, otp);
+                // Send the OTP to the email address (you can use libraries like JavaMail for this)
+                HttpSession session = request.getSession();
+                session.setAttribute("otp", otp);
+                session.setAttribute("email", email);
+                url = "verify_otp.jsp";
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            response.sendRedirect(url);
         }
     }
 
-    private void checkOTP(String otp){
-        
-    }
-    
     // Method to check if the email is valid
     private boolean isValidEmail(String email) {
         String emailPattern = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
@@ -84,7 +85,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             message.setFrom(new InternetAddress(email));// change accordingly
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("Gym NextEvo OTP Authentication Account");
-            message.setText("Your verification code is: " + otp);
+            message.setText("Your OTP: " + otp);
             // send message
             Transport.send(message);
         } catch (MessagingException e) {
@@ -93,16 +94,16 @@ public class ForgotPasswordServlet extends HttpServlet {
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -116,7 +117,7 @@ public class ForgotPasswordServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -127,7 +128,7 @@ public class ForgotPasswordServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 }

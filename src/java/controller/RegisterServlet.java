@@ -7,13 +7,19 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DAO.DAO;
 import model.DTO.AccountDTO;
 import model.DTO.CartDTO;
+import org.apache.catalina.ant.SessionsTask;
 import utils.UserError;
 
 /**
@@ -34,15 +40,20 @@ public class RegisterServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         UserError userError = new UserError();
-        String url = "";
+        String url = SUCCESS;
+        String button = request.getParameter("action");
+        String register = request.getParameter(("Register"));
+        if(button.equals("Register")){
         try {
             DAO dao = new DAO();
             boolean checkValidation = true;
             int userID = dao.generateRandomUserID();
             String firstName = request.getParameter("firstName");
+            HttpSession session = request.getSession();
+            session.setAttribute("firstName", firstName);
             String lastName = request.getParameter("lastName");
             String phoneNumber = request.getParameter("phoneNumber");
             String shippingAddress = request.getParameter("shippingAddress");
@@ -50,24 +61,31 @@ public class RegisterServlet extends HttpServlet {
             String username = request.getParameter("username");
             String email = request.getParameter("email");
 
-            if (checkValidation) {
-                dao.insertUserIDIntoPaymentCardInfo(userID);
-                dao.insertUserIDIntoCart(userID);
-                boolean checkInsert = dao.registerAccount(userID, password, username, email);
-                dao.registerUser(userID, firstName, lastName, phoneNumber, shippingAddress);
-                if (checkInsert) {
-                    url = SUCCESS;                   
+            if (dao.isEmailExist(email)) {
+                userError.setError("Email is exist!");
+                request.setAttribute("USER_ERROR", userError);
+                
+            } else {
+                if (checkValidation) {
+                    dao.insertUserIDIntoPaymentCardInfo(userID);
+                    dao.insertUserIDIntoCart(userID);
+                    boolean checkInsert = dao.registerAccount(userID, password, username, email);
+                    dao.registerUser(userID, firstName, lastName, phoneNumber, shippingAddress);
+                    if (checkInsert) {
+                        url = SUCCESS;
+                    } else {
+                        userError.setError("Register error!");
+                        request.setAttribute("USER_ERROR", userError);
+                    }
                 } else {
-                    userError.setError("Register error!");
                     request.setAttribute("USER_ERROR", userError);
                 }
-            } else {
-                request.setAttribute("USER_ERROR", userError);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
+        }
         }
     }
 
@@ -83,7 +101,13 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -97,7 +121,13 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

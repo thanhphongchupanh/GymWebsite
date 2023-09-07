@@ -28,7 +28,7 @@
       </div>
       <div class="cart-icon">
         <ion-icon style="font-size: 20px; margin-right: 5px;" name="cart-outline"></ion-icon>
-        <a href="login.html">Your Cart</a>
+        <a href="login.jsp">Your Cart</a>
       </div>
       <div class="user-icon">
         <ion-icon style="font-size: 20px; margin-right: 5px;" name="call-outline"></ion-icon>

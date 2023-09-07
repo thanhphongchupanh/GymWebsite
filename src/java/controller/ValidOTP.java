@@ -11,21 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.DAO.DAO;
 
 /**
  *
  * @author Admin
  */
-public class MainController extends HttpServlet {
-
-    private static final String LOGIN = "Login";
-    private static final String LOGIN_PAGE = "login.jsp";
-    private static final String LOGIN_CONTROLLER = "LoginServlet";
-    private static final String REGISTER = "Register";
-    private static final String REGISTER_CONTROLLER = "RegisterServlet";
-    private static final String FORGOTPASSWORD_CONTROLLER = "ForgotPasswordServlet";
-    private static final String CREATEPASSWORD_CONTROLLER = "CreatePasswordServlet";
-
+public class ValidOTP extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,24 +32,26 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = LOGIN_PAGE;
+        String button = request.getParameter("action");
+        String url = "";
+        HttpSession session = request.getSession();
         try {
-            String action = request.getParameter("action");
-            if (action == null) {
-                url = LOGIN_PAGE;
-            } else if (LOGIN.equals(action)) {
-                url = LOGIN_CONTROLLER;
-            } else if (REGISTER.equals(action)) {
-                url = REGISTER_CONTROLLER;
-            } else if (action.equals("SendOTP")) {
-                url = FORGOTPASSWORD_CONTROLLER;
-            } else if (action.equals("CreatePassword")){
-                url = CREATEPASSWORD_CONTROLLER;
+
+            if (button.equals("VerifyOTP")) {
+                int enteredOTP = Integer.parseInt(request.getParameter("txtOTP"));
+                int expectedOTP = (int) session.getAttribute("otp");
+                if (enteredOTP == expectedOTP) {
+                    url = "createnewpassword.jsp";
+                } else {
+                    String errorMessage = "Wrong OTP!";
+                    request.setAttribute("errorMessage", errorMessage);
+                    url = "verify_otp.jsp?action=VerifyOTP";
+                }
             }
         } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
+            e.printStackTrace();
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
     }
 

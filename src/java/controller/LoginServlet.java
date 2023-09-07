@@ -25,7 +25,6 @@ public class LoginServlet extends HttpServlet {
     private static final String AD = "Ad";
     private static final String ADMIN_PAGE = "admin.jsp";
     private static final String GUEST = "Guest";
-    private static final String GUEST_PAGE = "guest.jsp";
     private static final String LOGIN_PAGE = "login.jsp";
 
     /**
@@ -49,6 +48,8 @@ public class LoginServlet extends HttpServlet {
             AccountDTO loginUser = dao.checkLogin(username, password);
             if (loginUser == null) {
                 request.setAttribute("ERROR", "Incorrect username or password");
+                RequestDispatcher rd = request.getRequestDispatcher(url);
+                rd.forward(request, response);
             } else {
                 String roleID = loginUser.getRole();
                 HttpSession session = request.getSession();
@@ -56,7 +57,7 @@ public class LoginServlet extends HttpServlet {
                 if (AD.equals(roleID)) {
                     url = ADMIN_PAGE;
                 } else if (GUEST.equals(roleID)) {
-                    url = "homepage.jsp";
+                    url = "account.jsp";
                 } else {
                     request.setAttribute("ERROR", "Your role is not supported yet!");
                     url = LOGIN_PAGE;

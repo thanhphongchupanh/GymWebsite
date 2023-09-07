@@ -214,5 +214,47 @@ public class DAO {
         return randomOTP;
     }
 
-    
+    public boolean isEmailExist(String email) throws ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        boolean result = false;
+        try {
+            conn = DBHelper.makeConnection();
+            String query = "SELECT email FROM Account WHERE email = ?";
+            ptm = conn.prepareStatement(query);
+            ptm.setString(1, email);
+            rs = ptm.executeQuery();
+            while(rs.next()){
+                email = rs.getString("email");
+                result = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ptm != null) {
+                try {
+                    ptm.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+
 }

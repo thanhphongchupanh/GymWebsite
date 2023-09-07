@@ -9,6 +9,8 @@
 }
 
 
+
+
 /* FORM-BOX */
 .wrapper {
     position: fixed;
@@ -42,6 +44,11 @@
     transform: scale(1);
 }
 
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+}
 
 /*   Active class Pop-up   */
 /* == Active class ==  */
@@ -70,6 +77,10 @@
     position: absolute;
     margin-right: -30px;
     padding-right: 20px;
+}
+
+.form-box::-webkit-scrollbar {
+    width: 0.5em;
 }
 
 

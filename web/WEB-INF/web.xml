@@ -32,6 +32,10 @@
         <servlet-name>WheyProductListServlet</servlet-name>
         <servlet-class>controller.WheyProductListServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ValidOTP</servlet-name>
+        <servlet-class>controller.ValidOTP</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DispatchServlet</servlet-name>
         <url-pattern>/DispatchServlet</url-pattern>
@@ -64,10 +68,12 @@
         <servlet-name>WheyProductListServlet</servlet-name>
         <url-pattern>/WheyProductListServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidOTP</servlet-name>
+        <url-pattern>/ValidOTP</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>homepage.jsp</welcome-file>
