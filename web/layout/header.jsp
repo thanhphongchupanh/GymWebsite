@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,120 +36,116 @@
                 </div>
             </div>
         </div>
-        <div id="sidecart" class="sidecart" style="z-index: 1;">
-            <div class="cart_content">
-                <div class="cart_header">
-                    <ion-icon style="font-size: 20px; margin-right: 5px;" name="cart-outline"></ion-icon>
-                    <div class="header_title">
-                        <h2 style="user-select:none; cursor: pointer;">
-                            <a style="text-decoration: none; color: black;" href="login.jsp">Your Cart</a>
-                        </h2>
-                        <span id="items_num">4</span>
-                    </div>
-                    <span id="close_btn" class="close_btn">&times;</span>
+         <!--side cart-->
+<!--        <button id="open_cart_btn">
+        <ion-icon style="font-size: 20px; margin-right: 5px;" name="cart-outline"></ion-icon>
+    </button>-->
+<div id="sidecart" class="sidecart" style="z-index: 1;">
+        <div class="cart_content">
+            <div class="cart_header">
+                <ion-icon style="font-size: 20px; margin-right: 5px;" name="cart-outline"></ion-icon>
+                <div class="header_title">
+                    <h2 style="user-select:none; cursor: pointer;">
+                        <a style="text-decoration: none; color: black;" href="login.jsp">Your Cart</a>
+                    </h2>
+                    <span id="items_num">4</span>
                 </div>
-                <div class="cart_items">
-                    <div class="cart_item">
-                        <div class="remove_item">
-                            <span>&times;</span>
-                        </div>
-                        <div class="item_img">
-                            <img src="img/img1.jpg" alt="">
-                        </div>
-                        <div class="item_details">
-                            <p>Mass 2lbs No more Protein</p>
-                            <strong>$2000</strong>
-                            <div class="qty">
-                                <span>-</span>
-                                <strong>1</strong>
-                                <span>+</span>
-                            </div>
+                <span id="close_btn" class="close_btn">&times;</span>
+            </div>
+            <div class="cart_items">
+                <div class="cart_item">
+                    <div class="remove_item">
+                        <span>&times;</span>
+                    </div>
+                    <div class="item_img">
+                        <img src="img/img1.jpg" alt="">
+                    </div>
+                    <div class="item_details">
+                        <p>Mass 2lbs No more Protein</p>
+                        <strong>$2000</strong>
+                        <div class="qty">
+                            <span>-</span>
+                            <strong>1</strong>
+                            <span>+</span>
                         </div>
                     </div>
-                    <a href="login.jsp">Your Cart</a>
                 </div>
-                <div class="user-icon">
-                    <ion-icon style="font-size: 20px; margin-right: 5px;" name="call-outline"></ion-icon>
-                    <a href="#footer">Contact</a>
+
+                <div class="cart_item">
+                    <div class="remove_item">
+                        <span>&times;</span>
+                    </div>
+                    <div class="item_img">
+                        <img src="img/img1.jpg" alt="">
+                    </div>
+                    <div class="item_details">
+                        <p>Mass 2lbs No more Protein</p>
+                        <strong>$2000</strong>
+                        <div class="qty">
+                            <span>-</span>
+                            <strong>1</strong>
+                            <span>+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart_item">
+                    <div class="remove_item">
+                        <span>&times;</span>
+                    </div>
+                    <div class="item_img">
+                        <img src="img/img1.jpg" alt="">
+                    </div>
+                    <div class="item_details">
+                        <p>Mass 2lbs No more Protein</p>
+                        <strong>$2000</strong>
+                        <div class="qty">
+                            <span>-</span>
+                            <strong>1</strong>
+                            <span>+</span>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="cart_item">
+                    <div class="remove_item">
+                        <span>&times;</span>
+                    </div>
+                    <div class="item_img">
+                        <img src="img/img1.jpg" alt="">
+                    </div>
+                    <div class="item_details">
+                        <p>Mass 2lbs No more Protein</p>
+                        <strong>$2000</strong>
+                        <div class="qty">
+                            <span>-</span>
+                            <strong>1</strong>
+                            <span>+</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="cart_actions">
+                <div class="subtotal">
+                    <p>SUBTOTAL</p>
+                    <p>$ <span id="subtotal_price">3898</span></p>
+                </div>
+                <button>View Cart</button>
+                <button>Checkout</button>
+            </div>
         </div>
+    </div> 
     </body>
-    <div class="cart_item">
-        <div class="remove_item">
-            <span>&times;</span>
-        </div>
-        <div class="item_img">
-            <img src="img/img1.jpg" alt="">
-        </div>
-        <div class="item_details">
-            <p>Mass 2lbs No more Protein</p>
-            <strong>$2000</strong>
-            <div class="qty">
-                <span>-</span>
-                <strong>1</strong>
-                <span>+</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="cart_item">
-        <div class="remove_item">
-            <span>&times;</span>
-        </div>
-        <div class="item_img">
-            <img src="img/img1.jpg" alt="">
-        </div>
-        <div class="item_details">
-            <p>Mass 2lbs No more Protein</p>
-            <strong>$2000</strong>
-            <div class="qty">
-                <span>-</span>
-                <strong>1</strong>
-                <span>+</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="cart_item">
-        <div class="remove_item">
-            <span>&times;</span>
-        </div>
-        <div class="item_img">
-            <img src="img/img1.jpg" alt="">
-        </div>
-        <div class="item_details">
-            <p>Mass 2lbs No more Protein</p>
-            <strong>$2000</strong>
-            <div class="qty">
-                <span>-</span>
-                <strong>1</strong>
-                <span>+</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="cart_actions">
-    <div class="subtotal">
-        <p>SUBTOTAL</p>
-        <p>$ <span id="subtotal_price">3898</span></p>
-    </div>
-    <button>View Cart</button>
-    <button>Checkout</button>
-</div>
-</div>
-</div> 
-</body>
 <script>
     const openBtn = document.getElementById('open_cart_btn')
     const cart = document.getElementById('sidecart')
     const closeBtn = document.getElementById('close_btn')
     openBtn.addEventListener('mouseenter', openCart)
     closeBtn.addEventListener('click', closeCart)
-    function openCart() {
+    function openCart(){
         cart.classList.add('open')
     }
-    function closeCart() {
+    function closeCart(){
         cart.classList.remove('open')
     }
 </script>
