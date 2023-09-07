@@ -16,16 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class MainController extends HttpServlet {
-
-    private static final String LOGIN = "Login";
-    private static final String LOGIN_PAGE = "login.jsp";
-    private static final String LOGIN_CONTROLLER = "LoginServlet";
-    private static final String REGISTER = "Register";
-    private static final String REGISTER_CONTROLLER = "RegisterServlet";
-    private static final String FORGOTPASSWORD_CONTROLLER = "ForgotPasswordServlet";
-    private static final String CREATEPASSWORD_CONTROLLER = "CreatePasswordServlet";
-
+public class CreatePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,24 +30,17 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = LOGIN_PAGE;
-        try {
-            String action = request.getParameter("action");
-            if (action == null) {
-                url = LOGIN_PAGE;
-            } else if (LOGIN.equals(action)) {
-                url = LOGIN_CONTROLLER;
-            } else if (REGISTER.equals(action)) {
-                url = REGISTER_CONTROLLER;
-            } else if (action.equals("SendOTP")) {
-                url = FORGOTPASSWORD_CONTROLLER;
-            } else if (action.equals("CreatePassword")){
-                url = CREATEPASSWORD_CONTROLLER;
-            }
-        } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        String newPassword = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
+
+        if (newPassword.equals(confirmPassword)) {
+            request.setAttribute("successMessage", "Successfully!");
+            response.sendRedirect("homepage.jsp");
+        } else {
+            // Set the error message attribute
+            request.setAttribute("errorMessage", "Fail, please try again");
+            // Forward back to the createPassword.jsp with the error message
+            request.getRequestDispatcher("createPassword.jsp").forward(request, response);
         }
     }
 

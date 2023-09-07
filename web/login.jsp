@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +9,6 @@
         <title>Login Page</title>
         <link rel="stylesheet" href="css/loginForm.css">
         <%@include file="layout/header.jsp" %>
-
-
     </head>
     <body>
 
@@ -40,20 +39,26 @@
                         <label>
                             <input type="checkbox" checked> Remember me
                         </label>
-                        <a href="#">Forgot Password?</a>
+                        <a href="forgotpassword.jsp" class="forgot-password-link">Forgot Password?</a>
                     </div>
 
                     <button type="submit" class="btn" name="action" value="Login">Login</button>
+                    <div class="error-message">
+                        <c:if test="${not empty requestScope.ERROR}">
+                            <p>${requestScope.ERROR}</p>
+                        </c:if>
+                    </div>
 
                     <div class="login-register">
-                        <p>Don't have account? <a href="#" class="register-link">Register</a></p>
+                        <p>Don't have account? <a href="#" class="register-link">Register</a> </p>
                     </div>
                 </form>
+
             </div>
 
             <div class="form-box register">
                 <h2>Registration</h2>
-                <form action="MainController">
+                <form action="RegisterServlet">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
@@ -129,6 +134,17 @@
         <div class="notification">
             Register Successfully
         </div>
+
+
+        <c:set var="error" value="${requestScope.USER_ERROR}"/>
+        <c:if test="${not empty error}">
+            <div id="emailExistsMessage" class="notification">
+                Email is existed!
+            </div>
+        </c:if>
+
+
+
         <style>
             .notification {
                 position: fixed;
@@ -140,13 +156,15 @@
                 border-radius: 5px;
                 display: none;
                 padding: 20px;
-                z-index: 1000; /* ??m b?o h?p tho?i hi?n th? trên các ph?n t? khác */
+                z-index: 1000;
             }
 
             .notification.active {
                 display: block;
             }
         </style>
+
+
 
         <script>
             function showMessage() {
@@ -156,16 +174,19 @@
                 const emailInput = document.getElementById('email');
                 const phoneNumberInput = document.getElementById('phoneNumber');
                 const passwordInput = document.getElementById('password');
-
                 const notification = document.querySelector('.notification');
+                if (emailIsExisted(emailInput.value)) {
+                    emailExistsMessage.classList.add('active');
+                    return; // D?ng vi?c g?i form n?u email ?ã t?n t?i
+                } else {
+                    emailExistsMessage.classList.remove('active');
+                }
 
-                // Ki?m tra h?p l? cho các ô nh?p
                 if (firstNameInput.validity.valid && lastNameInput.validity.valid &&
                         usernameInput.validity.valid && emailInput.validity.valid &&
                         phoneNumberInput.validity.valid && passwordInput.validity.valid) {
 
-                notification.classList.add('active');
-
+                    notification.classList.add('active');
                     setTimeout(() => {
                         notification.classList.remove('active');
                     }, 2000); // T?t thông báo sau 3 giây
@@ -201,8 +222,6 @@
             iconClose.addEventListener('click', () => {
                 wrapper.classList.remove('active-popup');
             });
-
-
         </script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

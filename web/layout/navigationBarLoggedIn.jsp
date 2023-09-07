@@ -12,34 +12,19 @@
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <script type="text/javascript" src="js/jQuery.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        
     </head>
 
     <body>
         <div class="menu-bar">
             <ul>
-                <li><a href="homepage.jsp"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                <li><a href="account.jsp"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
                 <li><a id="allProductsLink" href="#"><i class="fa fa-th-list" aria-hidden="true"></i>All products</a></li>
                 <div class="sub-menu-1" style="display: none;">
                     <ul>
                         <c:set var="result" value="${sessionScope.CATE_LIST}"/>
                         <c:forEach var="dto" items="${result}">
-                            <li>
-                                <a href="
-                                   <c:if test="${dto.type == 'Whey'}">
-                                       wheyList.jsp
-                                   </c:if>
-                                   <c:if test="${dto.type == 'Mass'}">
-                                       massList.jsp
-                                   </c:if>
-                                   <c:if test="${dto.type == 'Pre Workout'}">
-                                       preworkoutList.jsp
-                                   </c:if>
-                                   ">
-                                    <c:out value="${dto.type}" />
-                                </a>
-                            </li>
-                        </c:forEach>
+                            <li><a href="#"><c:out value="${dto.name}" /></a></li>
+                            </c:forEach>
                     </ul>
                 </div>
 
@@ -59,9 +44,6 @@
                 </li>
             </ul>           
         </div>
-                        
-                        
-        
     </body>
 
     <script type="text/javascript">

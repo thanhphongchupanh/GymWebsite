@@ -147,7 +147,7 @@ public class DAO {
         }
         return check;
     }
-    
+
     public boolean insertUserIDIntoPaymentCardInfo(int userID) throws SQLException, ClassNotFoundException {
         boolean check = false;
         Connection conn = null;
@@ -174,7 +174,7 @@ public class DAO {
         }
         return check;
     }
-    
+
     public boolean insertUserIDIntoAccount(int userID) throws SQLException, ClassNotFoundException {
         boolean check = false;
         Connection conn = null;
@@ -206,6 +206,55 @@ public class DAO {
         Random random = new Random();
         int randomNumber = random.nextInt(10000);
         return randomNumber;
+    }
+
+    public int generateOTP() {
+        Random random = new Random();
+        int randomOTP = random.nextInt(900000);
+        return randomOTP;
+    }
+
+    public boolean isEmailExist(String email) throws ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        boolean result = false;
+        try {
+            conn = DBHelper.makeConnection();
+            String query = "SELECT email FROM Account WHERE email = ?";
+            ptm = conn.prepareStatement(query);
+            ptm.setString(1, email);
+            rs = ptm.executeQuery();
+            while(rs.next()){
+                email = rs.getString("email");
+                result = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ptm != null) {
+                try {
+                    ptm.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
     }
 
 }
