@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,6 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/sideCart.css">
     </head>
-
     <body>
         <div class="header">
             <div class="logo">
@@ -24,7 +24,14 @@
             <div class="user-menu">
                 <div class="user-icon">
                     <ion-icon style="font-size: 20px; margin-right: 5px;" name="person-circle-outline"></ion-icon>
-                    <a href="login.jsp">Account</a>
+                     <c:choose>
+                            <c:when test="${not empty sessionScope.firstName}">
+                            <a href="infomation.jsp">${sessionScope.firstName}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="login.jsp">Account</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="user-icon">
                     <ion-icon style="font-size: 20px; margin-right: 5px;" name="call-outline"></ion-icon>

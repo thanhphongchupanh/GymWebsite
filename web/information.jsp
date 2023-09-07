@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home page</title>     
-        <%@include file="layout/loggedin.jsp" %> 
+        <%@include file="layout/header.jsp" %> 
         <link rel="stylesheet" href="css/wheyList.css">
     </head>
     <style>
@@ -31,7 +31,7 @@
     </style>
     <body>
         <!--Navigation Bar-->
-        <%@include file="layout/navigationBarLoggedIn.jsp" %> 
+        <%@include file="layout/navigationBar.jsp" %> 
         <br/>
         <br/>
         <br/>

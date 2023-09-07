@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="model.DTO.CategoryDTO"%>
 <!DOCTYPE html>
@@ -44,19 +43,7 @@
                 </div>
 
                 <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Service</a></li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                        <c:choose>
-                            <c:when test="${not empty sessionScope.firstName}">
-                                <c:out value="${sessionScope.firstName}" />
-                            </c:when>
-                            <c:otherwise>
-                                Account
-                            </c:otherwise>
-                        </c:choose>
-                    </a>
-                </li>
+                <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Your Order</a></li>
             </ul>           
         </div>
                         

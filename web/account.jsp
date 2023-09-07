@@ -26,7 +26,7 @@
     </style>
     <body>
         <!--Navigation Bar-->
-        <%@include file="layout/navigationBarLoggedIn.jsp" %> 
+        <%@include file="layout/navigationBar.jsp" %> 
         <br/>
         <br/>
         <br/>

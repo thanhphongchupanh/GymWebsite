@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
                 if (AD.equals(roleID)) {
                     url = ADMIN_PAGE;
                 } else if (GUEST.equals(roleID)) {
-                    url = "account.jsp";
+                    url = "homepage.jsp";
                 } else {
                     request.setAttribute("ERROR", "Your role is not supported yet!");
                     url = LOGIN_PAGE;
